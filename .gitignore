@@ -1,0 +1,28 @@
+# --- Python cache ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# --- Virtual environments ---
+.venv/
+venv/
+ENV/
+env/
+
+# --- Streamlit ---
+.streamlit/
+
+# --- Secrets ---
+.env
+.env.*
+!*.example         # allow .env.example in repo
+
+
+# --- IDE/editor files ---
+.vscode/
+.idea/
+.DS_Store*
