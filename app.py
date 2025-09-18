@@ -3,6 +3,7 @@ import json
 #from Functions import response_func, build_instructions
 import Functions
 from datetime import datetime
+import os
 
 
 #streamlit app config
@@ -15,8 +16,11 @@ st.title("LXD Assistant Evaluation App")
 with open("Config.json", "r") as f:
     config = json.load(f)
 
+#load encripted env 
+Functions.load_encrypted_env()
+
 #Define variable and LMM apply api key
-llm = OpenAI(api_key = config["OPENAI_API_KEY"])
+llm = OpenAI(api_key = os.environ["OPENAI_API_KEY"])
 role = "You are a Kashida AI LXD"
 context = ["Context item 1","Context Item 2"]
 reasoning_summary = "detailed"

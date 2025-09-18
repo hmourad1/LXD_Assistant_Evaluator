@@ -1,5 +1,4 @@
 {
   "llmmodel": ["gpt-5","gpt-5-nano"],
-  "OPENAI_API_KEY": "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",
   "reasoning_effort": ["low", "medium", "high"]
 }

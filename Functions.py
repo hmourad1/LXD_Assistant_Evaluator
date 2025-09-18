@@ -2,6 +2,22 @@
 import json
 import os
 import re
+from cryptography.fernet import Fernet
+from dotenv import dotenv_values
+from io import StringIO
+
+def load_encrypted_env(enc_file=".env.enc"):
+    key = os.environ.get("FERNET_KEY")
+    if not key:
+        raise RuntimeError("Set FERNET_KEY as an environment variable first!")
+
+    fernet = Fernet(key.encode())
+    encrypted = open(enc_file, "rb").read()
+    plaintext = fernet.decrypt(encrypted).decode()
+
+    # Load into os.environ
+    from dotenv import load_dotenv
+    load_dotenv(stream=StringIO(plaintext), override=True)
 
 
 # Define prompt function
