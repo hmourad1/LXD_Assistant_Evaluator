@@ -19,10 +19,16 @@ env/
 # --- Secrets ---
 .env
 .env.*
-!*.example         # allow .env.example in repo
+!*.enc        # allow .env.enc in repo
 
 
 # --- IDE/editor files ---
 .vscode/
 .idea/
 .DS_Store*
+
+#working documents
+ToDo.txt
+
+
+Encrypt_Key.py

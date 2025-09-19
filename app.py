@@ -53,8 +53,17 @@ with tab1:
         
         # Prompt Input
         st.write("### Prompt")
+        with open("Prompts.json", "r", encoding="utf-8") as f:
+            prompts_data = json.load(f)
+        prompt_options = [item["prompt"] for item in prompts_data]
+
+
         with st.form(key="prompt_input"):
-            prompt = st.text_input("Enter Prompt")
+            #prompt = st.text_input("Enter Prompt")
+            prompt = st.selectbox(
+                "Choose a prompt:",
+                prompt_options
+            )
             submit_prompt = st.form_submit_button("Submit Prompt")
         if submit_prompt:
             st.success(f"You submitted this prompt: {prompt}")
@@ -77,22 +86,34 @@ with tab1:
         if submit_eval:
             st.success(f"You submitted this Evaluation: {st.session_state.LXD_eval}")
 
-        save = st.button("Save Results")        
+                
 
     with col_right: #Outputs column - Test Case Information
-        st.write("## Test Case")
-        st.write("### Responses")
-
-        col_RespBase, col_RespAgent = st.columns([1, 1])
-
-        with col_RespBase:
-            st.write("**Base LLM Response**")
-            st.write(st.session_state.base_resp_text)
-            st.write(st.session_state.base_resp)
-        with col_RespAgent:
-            st.write("**Agent Response**")
-            st.write(st.session_state.agent_resp_text)
-            st.write(st.session_state.agent_resp)
+        with st.container():
+            Col_RL, Col_RR = st.columns([4,1])    
+            with Col_RL:
+                st.write("## Test Case")
+            with Col_RR:
+                save = st.button("Save Results")
+        with st.container():
+            with st.container():
+                st.write("#### Text Responses")
+                col_TxtRespBase, col_TxtRespAgent = st.columns([1, 1])
+                with col_TxtRespBase:
+                    st.write("**Base LLM Response**")                    
+                    st.write(st.session_state.base_resp_text)
+                with col_TxtRespAgent:
+                    st.write("**Agent Response**")
+                    st.write(st.session_state.agent_resp_text)
+            with st.container():
+                st.write("#### Full Responses")
+                col_FullRespBase, col_FullRespAgent = st.columns([1, 1])
+                with col_FullRespBase:
+                    st.write("**Base LLM Response**")                    
+                    st.write(st.session_state.base_resp)
+                with col_FullRespAgent:
+                    st.write("**Agent Response**")
+                    st.write(st.session_state.agent_resp)
         
     # Save test case outputs to outputs.json            
     if save:

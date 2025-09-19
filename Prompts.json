@@ -1,13 +1,25 @@
 [
     {
-        "Prompt": "",
+        "prompt": "",
         "id": "UPR00000",
         "category": ""
     },
     {
-        "prompt": "dfgsf",
-        "id": "UPR00001",
+        "prompt": "Write 5 multiple-choice questions that assess learners’ understanding of [topic], including correct answers and distractors",
+        "id": "UPR00004",
         "category": "",
-        "timestamp": "2025-09-19T01:12:50.840009"
+        "timestamp": "2025-09-19T22:36:02.755045"
+    },
+    {
+        "prompt": "Suggest constructive feedback statements for learners who struggle with [task or skill].",
+        "id": "UPR00005",
+        "category": "",
+        "timestamp": "2025-09-19T22:36:23.882339"
+    },
+    {
+        "prompt": "Propose interactive elements (quizzes, discussions, case studies) that could increase learner engagement in a self-paced online module about [topic].",
+        "id": "UPR00006",
+        "category": "",
+        "timestamp": "2025-09-19T22:36:34.452147"
     }
 ]
